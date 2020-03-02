@@ -53,12 +53,14 @@ void StaticGainGeneration( int self_idx, double * static_gain , LOCATION * coord
     Set_PathLoss_Parameters(self_idx, sec_idx) ;
     Compute_PathLoss(self_idx, sec_idx);
     Set_Shadowing(self_idx, sec_idx) ;
-    antenna[ sec_idx ] = -MIN( 12. * pow((ue2sector_angle[self_idx][sec_idx]/ANGLE_3dB_h),2) , 20. );
+    antenna[ sec_idx ] = -MIN( 12. * pow((ue2sector_angle[self_idx][sec_idx]/ANGLE_3dB_h),2) , 30. );
         // This equation comes from 8.5.1.1 (2) in dB
     static_gain[ sec_idx ] = - ( shadowing + path_loss[ sec_idx ] ) ;
   } 
   (*coordinate).x = location_x;
   (*coordinate).y = location_y;
+   
+  
 }
 
 
@@ -102,7 +104,7 @@ void Set_Scenario_Environment()
   else if ( scenario == RURAL_MACRO ) 
   { 
     site2site_distance = 1732. ; 
-    carrier_freq = 0.8 * 1000000000. ; 
+    carrier_freq = 0.7 * 1000000000. ; 
     K_mu = 7. ;
     K_sigma = 4. ;
     speed_UE = 120. * 1000. /3600. ;

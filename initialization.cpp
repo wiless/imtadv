@@ -53,12 +53,13 @@ void SimulationConfiguration(int argc,char *argv[])
   if (argc == 2 )
   {
     fstream infile;
+    
     if(!OpenFileIn(infile,argv[1]))
     {
       cout << "error : Can't find the file "<<"'"<<argv[1]<<"'"<<endl;
       exit(1);
     } 
-    
+     
     _seed              = int( Seek_Argument(infile,"_seed", 100000) );
     run_times          = int( Seek_Argument(infile,"run_times", 100) );
     num_drops          = int( Seek_Argument(infile,"num_drops", 2) );
@@ -365,3 +366,8 @@ void loading ()
          << "------------------------" <<endl;
 }
 
+
+
+void make_directory( void ){
+  
+}
